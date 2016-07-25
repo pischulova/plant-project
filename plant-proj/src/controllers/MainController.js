@@ -1,31 +1,52 @@
 export class MainController {
-    constructor($scope, LS) {
+    constructor($scope, $window, LS) {
 
-        $scope.plants = LS.getPlantArray() || LS.initStorage();
+        $scope.plants = LS.getPlantArray() || LS.nitStorage();
 
         $scope.addPlant = function(name, age, needWater, imageLink) {
             var newPlant = {
                 'name': name,
-                'age': age,
-                'waterPerWeek': needWater,
+                'age': parseFloat(age),
+                'waterAfterDays': needWater,
                 'lastWatered': new Date(),
                 'image': imageLink
             };
-            console.log(newPlant);
+            $window.location.reload();
             return LS.addPlant(newPlant);
         };
-    };
+        
+        $scope.orderProp = 'name';
+        $scope.isOrderReverse = false;
+
+        $scope.tab = function (tabIndex) {
+          switch (tabIndex) {
+            case 0:
+              $scope.orderProp='name';
+              break;
+            case 1:
+              $scope.orderProp='age';
+              break;
+            case 2:
+              $scope.orderProp='lastWatered';
+          }
+          if ($scope.isOrderReverse == false) {
+            $scope.isOrderReverse = true;
+          } else {
+            $scope.isOrderReverse = false;
+          }
+        };
+        
+        $scope.needsWatering = function(plant) {
+          var waterNeeded = false;
+          
+          var today = new Date().getTime();
+          var lastWateredInMillis = new Date(plant.lastWatered).getTime();
+          var needsWateringInMillis = (plant.waterAfterDays)*86400000;
+         
+          if ((lastWateredInMillis + needsWateringInMillis) <= today) {
+            waterNeeded = true;
+          }
+          return waterNeeded; 
+        };
+    }
 }
-
-// function getBase64Image(img) {
-//     var canvas = document.createElement("canvas");
-//     canvas.width = img.width;
-//     canvas.height = img.height;
-
-//     var ctx = canvas.getContext("2d");
-//     ctx.drawImage(img, 0, 0);
-
-//     var dataURL = canvas.toDataURL("image/png");
-
-//     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-// }

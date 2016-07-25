@@ -14,22 +14,31 @@
         Find plant: <input type="text" ng-model="search" />
         <br/>
         <br/>
-        <div style="display:inline-block; width:270px; height:270px;" ng-repeat="plant in plants | filter:search | orderBy:'name'">
+        <div>Order by:
+          <button ng-click="tab(0)"> Name </button>
+          <button ng-click="tab(1)"> Age </button>
+          <button ng-click="tab(2)"> Last watered </button>
+        </div>
+        <br/>
+        <div style="display:inline-block; width:270px; height:270px;" ng-repeat="plant in plants | filter:search | orderBy:orderProp:isOrderReverse">
           <img ng-src="{{plant.image}}" style="max-height:200; max-width:200;"/>
           <div>{{plant.name}}</div>
           <div>Age: {{plant.age}}</div>
-          <div>Water {{plant.waterPerWeek}} times a week</div>
+          <div>Water every {{plant.waterAfterDays}} days</div>
           <div>Last watered: {{plant.lastWatered | date:'dd MMM yyyy'}}</div>
+          <div style="color:red;" ng-if="needsWatering(plant)">
+            Needs watering!
+          </div>
           <br/>
         </div>
         <br/>
-        <div style="">
+        <div>
           <h2>Add new plant</h2>
           <div>Name: <input type="text" ng-model="name"></div>
           <div>Age: <input type="text" ng-model="age"></div>
-          <div>Needs watering per week: <input type="text" ng-model="needWater"></div>
+          <div>Needs watering every <input type="text" ng-model="water"> days </div>
           <div>Image link: <input type='text' ng-model="imageLink"/></div>
-          <input type="button" value="add" ng-click="addPlant(name, age, needWater, imageLink)">
+          <input type="button" value="add" ng-click="addPlant(name, age, water, imageLink)">
         </div>
         
       </div>
