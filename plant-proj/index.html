@@ -1,0 +1,39 @@
+<html ng-app="plant">
+
+  <head>
+    <meta charset="utf-8">
+    <title>Plant Project</title>
+    <script src="lib/boundle.js" charset="utf-8"></script>
+  </head>
+
+  <body>
+    <h1>Plant Project</h1>
+    <div class="HolaApp">
+      <div ng-controller="MainController">
+        <h2>Here you can control all your home plants</h2> 
+        Find plant: <input type="text" ng-model="search" />
+        <br/>
+        <br/>
+        <div style="display:inline-block; width:270px; height:270px;" ng-repeat="plant in plants | filter:search | orderBy:'name'">
+          <img ng-src="{{plant.image}}" style="max-height:200; max-width:200;"/>
+          <div>{{plant.name}}</div>
+          <div>Age: {{plant.age}}</div>
+          <div>Water {{plant.waterPerWeek}} times a week</div>
+          <div>Last watered: {{plant.lastWatered | date:'dd MMM yyyy'}}</div>
+          <br/>
+        </div>
+        <br/>
+        <div style="">
+          <h2>Add new plant</h2>
+          <div>Name: <input type="text" ng-model="name"></div>
+          <div>Age: <input type="text" ng-model="age"></div>
+          <div>Needs watering per week: <input type="text" ng-model="needWater"></div>
+          <div>Image link: <input type='text' ng-model="imageLink"/></div>
+          <input type="button" value="add" ng-click="addPlant(name, age, needWater, imageLink)">
+        </div>
+        
+      </div>
+    </div>
+  </body>
+
+  </html>
