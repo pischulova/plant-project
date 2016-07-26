@@ -11,7 +11,7 @@ export class MainController {
                 'lastWatered': new Date(),
                 'image': imageLink
             };
-            $window.location.reload();
+            $scope.plants.push(newPlant);
             return LS.addPlant(newPlant);
         };
         
