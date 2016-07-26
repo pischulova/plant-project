@@ -1,7 +1,7 @@
 export class MainController {
     constructor($scope, $window, LS) {
 
-        $scope.plants = LS.getPlantArray() || LS.nitStorage();
+        $scope.plants = LS.getPlantArray() || LS.initStorage();
 
         $scope.addPlant = function(name, age, needWater, imageLink) {
             var newPlant = {
