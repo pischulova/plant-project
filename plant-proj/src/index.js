@@ -1,8 +1,14 @@
 import * as angular from 'angular';
+import "angular-translate";
+import "angular-resource";
 
 import {MainController} from "./controllers/MainController";
-import {storage} from "./controllers/LocalStorage";
+import {localStorage} from "./services/LocalStorage";
+import {serverStorage} from "./services/ServerStorage";
+import {translate} from "./services/Translate"; 
 
-let app = angular.module('plant', []);
-app.controller('MainController', MainController);
-app.factory('LS', storage);
+let app = angular.module('plant', ['pascalprecht.translate', 'ngResource']);
+// app.factory('storage', localStorage);
+app.factory('storage', serverStorage);
+app.controller('MainController', ['$scope', '$translate', 'storage', MainController]);
+app.config(translate);

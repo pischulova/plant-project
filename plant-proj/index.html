@@ -7,38 +7,45 @@
   </head>
 
   <body>
-    <h1>Plant Project</h1>
-    <div class="HolaApp">
+    <h1>{{'PLANT_PROJ' | translate}}</h1>
+    <div>
       <div ng-controller="MainController">
-        <h2>Here you can control all your home plants</h2> 
-        Find plant: <input type="text" ng-model="search" />
+        <h2>{{'HOME_DESCR' | translate}}</h2>
+        <button ng-click="translateAll('ru');">RU</button>
+        <button ng-click="translateAll('en');">EN</button>
+        <br/><br/>
+        {{'FIND_PLANT' | translate}}: <input type="text" ng-model="search" />
         <br/>
         <br/>
-        <div>Order by:
-          <button ng-click="tab(0)"> Name </button>
-          <button ng-click="tab(1)"> Age </button>
-          <button ng-click="tab(2)"> Last watered </button>
+        <div>{{'ORDER_BY' | translate}}:
+          <button ng-click="tab(0)"> {{'NAME' | translate}} </button>
+          <button ng-click="tab(1)"> {{'AGE' | translate}} </button>
+          <button ng-click="tab(2)"> {{'LAST_WATERED' | translate}} </button>
         </div>
         <br/>
-        <div style="display:inline-block; width:270px; height:270px;" ng-repeat="plant in plants | filter:search | orderBy:orderProp:isOrderReverse">
-          <img ng-src="{{plant.image}}" style="max-height:200; max-width:200;"/>
-          <div>{{plant.name}}</div>
-          <div>Age: {{plant.age}}</div>
-          <div>Water every {{plant.waterAfterDays}} days</div>
-          <div>Last watered: {{plant.lastWatered | date:'dd MMM yyyy'}}</div>
+        <div style="display:inline-block; width:270px; height:290px;" ng-repeat="plant in plants | filter:search | orderBy:orderProp:isOrderReverse">
+          <button style="" ng-click="deletePlant(plant)">x</button><img ng-src="{{plant.image}}" style="max-height:200; max-width:200;"/>
+          <div>{{plant.name}}</div> 
+          <div>{{'AGE' | translate}}: {{plant.age}}</div>
+          <div>{{'WATERING_INTERVAL' | translate}} {{plant.waterInterv}} {{'DAYS' | translate}}</div>
+          <div>{{'LAST_WATERED' | translate}}: {{plant.lastWatered | date:'dd MMM yyyy'}}</div>
+          
           <div style="color:red;" ng-if="needsWatering(plant)">
-            Needs watering!
+            {{'NEEDS_WATER' | translate}}!
+            <button ng-click="waterNow(plant)">{{'WATER' | translate}}</button>
           </div>
-          <br/>
+          <div style="color:green;" ng-if="!plant.needsWater">
+            {{'PLAN_WATER' | translate}} {{plant.nextWater}} {{'DAYS' | translate}}
+          </div>
         </div>
         <br/>
         <div>
-          <h2>Add new plant</h2>
-          <div>Name: <input type="text" ng-model="name"></div>
-          <div>Age: <input type="text" ng-model="age"></div>
-          <div>Needs watering every <input type="text" ng-model="water"> days </div>
-          <div>Image link: <input type='text' ng-model="imageLink"/></div>
-          <input type="button" value="add" ng-click="addPlant(name, age, water, imageLink)">
+          <h2>{{'ADD_PLANT' | translate}}</h2>
+          <div>{{'NAME' | translate}}: <input type="text" ng-model="new.name"></div>
+          <div>{{'AGE' | translate}}: <input type="text" ng-model="new.age"></div>
+          <div>{{'WATERING_INTERVAL' | translate}} <input type="text" ng-model="new.waterInterv"> {{'DAYS' | translate}} </div>
+          <div>{{'IMAGE_LINK' | translate}}: <input type='text' ng-model="new.image"/></div>
+          <button ng-click="addPlant()">{{'ADD' | translate}}</button>
         </div>
         
       </div>

@@ -1,6 +1,6 @@
 import * as angular from 'angular';
 
-export function storage($window, $rootScope) {
+export function localStorage($window, $rootScope) {
     angular.element($window).on('storage', function(event) {
         if (event.key === 'my-storage') {
             $rootScope.$apply();

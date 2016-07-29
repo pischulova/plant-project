@@ -4,7 +4,9 @@
   "description": "Demo bootstrap for lesson 4 for js course",
   "main": "src/index.js",
   "dependencies": {
-    "angular": "^1.5.7"
+    "angular": "^1.5.7",
+    "angular-resource": "^1.5.8",
+    "angular-translate": "^2.11.1"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
