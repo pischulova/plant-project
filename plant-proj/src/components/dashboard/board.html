@@ -1,0 +1,20 @@
+<div>
+    <div>
+        <h2>{{'HOME_DESCR' | translate}}</h2>
+        <button ng-click="$ctrl.translateAll('ru');">RU</button>
+        <button ng-click="$ctrl.translateAll('en');">EN</button>
+        <br/><br/> {{'FIND_PLANT' | translate}}: <input type="text" ng-model="search" />
+        <br/>
+        <br/>
+        <div>{{'ORDER_BY' | translate}}:
+            <button ng-click="$ctrl.tab(0)"> {{'NAME' | translate}} </button>
+            <button ng-click="$ctrl.tab(1)"> {{'AGE' | translate}} </button>
+            <button ng-click="$ctrl.tab(2)"> {{'LAST_WATERED' | translate}} </button>
+        </div>
+        <br/>
+        <div style="display:inline-block; width:270px; height:290px;" ng-repeat="plant in $ctrl.plants | filter:search | orderBy:$ctrl.orderProp:$ctrl.isOrderReverse">
+            <plant plant="plant"></plant>
+        </div>
+        <br/>
+    </div>
+</div>

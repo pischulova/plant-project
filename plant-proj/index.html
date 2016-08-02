@@ -1,55 +1,19 @@
 <html ng-app="plant">
 
-  <head>
-    <meta charset="utf-8">
-    <title>Plant Project</title>
-    <script src="lib/boundle.js" charset="utf-8"></script>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <title>Plant Project</title>
+  <script src="lib/boundle.js" charset="utf-8"></script>
+</head>
 
-  <body>
-    <h1>{{'PLANT_PROJ' | translate}}</h1>
-    <div>
-      <div ng-controller="MainController">
-        <h2>{{'HOME_DESCR' | translate}}</h2>
-        <button ng-click="translateAll('ru');">RU</button>
-        <button ng-click="translateAll('en');">EN</button>
-        <br/><br/>
-        {{'FIND_PLANT' | translate}}: <input type="text" ng-model="search" />
-        <br/>
-        <br/>
-        <div>{{'ORDER_BY' | translate}}:
-          <button ng-click="tab(0)"> {{'NAME' | translate}} </button>
-          <button ng-click="tab(1)"> {{'AGE' | translate}} </button>
-          <button ng-click="tab(2)"> {{'LAST_WATERED' | translate}} </button>
-        </div>
-        <br/>
-        <div style="display:inline-block; width:270px; height:290px;" ng-repeat="plant in plants | filter:search | orderBy:orderProp:isOrderReverse">
-          <button style="" ng-click="deletePlant(plant)">x</button><img ng-src="{{plant.image}}" style="max-height:200; max-width:200;"/>
-          <div>{{plant.name}}</div> 
-          <div>{{'AGE' | translate}}: {{plant.age}}</div>
-          <div>{{'WATERING_INTERVAL' | translate}} {{plant.waterInterv}} {{'DAYS' | translate}}</div>
-          <div>{{'LAST_WATERED' | translate}}: {{plant.lastWatered | date:'dd MMM yyyy'}}</div>
-          
-          <div style="color:red;" ng-if="needsWatering(plant)">
-            {{'NEEDS_WATER' | translate}}!
-            <button ng-click="waterNow(plant)">{{'WATER' | translate}}</button>
-          </div>
-          <div style="color:green;" ng-if="!plant.needsWater">
-            {{'PLAN_WATER' | translate}} {{plant.nextWater}} {{'DAYS' | translate}}
-          </div>
-        </div>
-        <br/>
-        <div>
-          <h2>{{'ADD_PLANT' | translate}}</h2>
-          <div>{{'NAME' | translate}}: <input type="text" ng-model="new.name"></div>
-          <div>{{'AGE' | translate}}: <input type="text" ng-model="new.age"></div>
-          <div>{{'WATERING_INTERVAL' | translate}} <input type="text" ng-model="new.waterInterv"> {{'DAYS' | translate}} </div>
-          <div>{{'IMAGE_LINK' | translate}}: <input type='text' ng-model="new.image"/></div>
-          <button ng-click="addPlant()">{{'ADD' | translate}}</button>
-        </div>
-        
-      </div>
-    </div>
-  </body>
+<body>
+  <h1>{{'PLANT_PROJ' | translate}}</h1>
+  <div>
+    <a ui-sref="index">HOME</a>
+    <a ui-sref="register">Add new plant</a>
+  </div>
+  <br>
+  <div ui-view></div>
+</body>
 
-  </html>
+</html>

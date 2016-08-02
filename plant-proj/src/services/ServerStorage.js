@@ -9,7 +9,6 @@ export function serverStorage($resource) {
             plant.waterInterv = obj.waterInterv;
             plant.lastWatered = new Date();
             plant.image = obj.image;
-            console.log(plant);
             plant.$save().then(callback);
         },
         getAllPlants: function() {
