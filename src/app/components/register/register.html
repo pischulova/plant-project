@@ -1,0 +1,42 @@
+<div class="container">
+<form name="form" novalidate>
+    <div>
+        <acme-navbar creation-date="main.creationDate"></acme-navbar>
+    
+    </div>
+    <h2>{{'ADD_PLANT' | translate}}</h2>
+    <div>
+        <div style="display:inline-block;">{{'NAME' | translate}}:
+            <input type="text" ng-model="plant.name" name="pName" ng-minlength="3" ng-maxlength="10" required=""></div>
+        <div ng-show="form.$submitted || form.pName.$touched" style="display:inline-block;">
+            <div ng-show="form.pName.$error.required || form.pName.$error.minlength || form.pName.$error.maxlength" style="display:inline-block;">
+                Required, must be between 3 and 10 symbols</div>
+        </div>
+    </div>
+    <div>
+        <div style="display:inline-block;">{{'AGE' | translate}}:
+            <input type="text" ng-model="plant.age" name="age" ng-pattern="/^\d+$/" required=""></div>
+        <div ng-show="form.$submitted || form.age.$touched" style="display:inline-block;">
+            <div ng-show="form.age.$error.required || form.age.$error.pattern" style="display:inline-block;">
+                Required, only digits allowed</div>
+        </div>
+    </div>
+    <div>
+        <div style="display:inline-block;">{{'WATERING_INTERVAL' | translate}}:
+            <input type="text" ng-model="plant.waterInterv" name="interval" ng-pattern="/^\d+$/" required=""></div>
+        <div ng-show="form.$submitted || form.interval.$touched" style="display:inline-block;">
+            <div ng-show="form.interval.$error.required || form.interval.$error.pattern" style="display:inline-block;">
+                Required, only digits allowed</div>
+        </div>
+    </div>
+    <div>
+        <div style="display:inline-block;">{{'IMAGE_LINK' | translate}}:
+            <input type="text" ng-model="plant.image" name="image" required=""></div>
+        <div ng-show="form.$submitted || form.image.$touched" style="display:inline-block;">
+            <div ng-show="form.image.$error.required" style="display:inline-block;">
+                Required</div>
+        </div>
+    </div>
+    <input type="submit" ng-click="$ctrl.registerPlant(plant)" value="{{'ADD' | translate}}" />
+</form>
+</div>
