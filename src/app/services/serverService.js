@@ -4,7 +4,7 @@ export function serverService($resource) {
         addPlant: addPlant,
         getAllPlants: getAllPlants,
         waterPlant: waterPlant,
-        deletePlant: deletePlant,
+        deletePlant: deletePlant
     };
     return service;
 

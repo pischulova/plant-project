@@ -5,7 +5,7 @@ export function NavbarDirective() {
     restrict: 'E',
     templateUrl: 'app/components/navbar/navbar.html',
     scope: {
-        creationDate: '='
+      creationDate: '='
     },
     controller: NavbarController,
     controllerAs: 'vm',
@@ -16,10 +16,16 @@ export function NavbarDirective() {
 }
 
 class NavbarController {
-  constructor (moment) {
+  constructor (moment, $translate) {
     'ngInject';
+    let self = this;
 
     // "this.creationDate" is available by directive option "bindToController: true"
-    this.relativeDate = moment(this.creationDate).fromNow();
+    self.relativeDate = moment(this.creationDate).fromNow();
+    self.translateAll = translateAll;
+
+    function translateAll(lang) {
+      $translate.use(lang);
+    }
   }
 }

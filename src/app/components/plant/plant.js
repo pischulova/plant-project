@@ -8,7 +8,7 @@
         templateUrl: templ
     };
 
-    function boardController($scope, plantService) {
+    function boardController(plantService) {
         let self = this;
 
         self.deletePlant = deletePlant;
@@ -28,4 +28,4 @@
         }
     }
 
-    boardController.$inject = ['$scope', 'plantService'];
+    boardController.$inject = ['plantService'];

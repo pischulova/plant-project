@@ -5,7 +5,7 @@
         templateUrl: templ
     };
 
-    function registerController($scope, plantService) {
+    function registerController(plantService) {
         let self = this;
         self.registerPlant = registerPlant;
 
@@ -14,4 +14,4 @@
         }
     }
     
-    registerController.$inject = ['$scope', 'plantService'];
+    registerController.$inject = ['plantService'];

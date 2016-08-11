@@ -28,8 +28,8 @@ angular.module('angularPlant', ['ngSanitize', 'ngMessages', 'ngResource', 'ui.ro
   .run(runBlock)
   .service('githubContributor', GithubContributorService)
   .service('webDevTec', WebDevTecService)
-  .service('plantService', plantService)
-  .service('serverService', serverService)
+  .factory('plantService', plantService)
+  .factory('serverService', serverService)
   .controller('MainController', MainController)
   .directive('acmeNavbar', NavbarDirective)
   .directive('acmeMalarkey', MalarkeyDirective);

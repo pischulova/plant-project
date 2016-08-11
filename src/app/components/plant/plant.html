@@ -1,13 +1,24 @@
-<button style="" ng-click="$ctrl.deletePlant($ctrl.plant)">x</button><img ng-src="{{$ctrl.plant.image}}" style="max-height:200px; max-width:200px;" />
-<div>{{$ctrl.plant.name}}</div>
-<div>{{'AGE' | translate}}: {{$ctrl.plant.age}}</div>
-<div>{{'WATERING_INTERVAL' | translate}} {{$ctrl.plant.waterInterv}} {{'DAYS' | translate}}</div>
-<div>{{'LAST_WATERED' | translate}}: {{$ctrl.plant.lastWatered | date:'dd MMM yyyy'}}</div>
+<img ng-src="{{$ctrl.plant.image}}" style="display: block;margin-left:auto; margin-right:auto; height:180px;" />
+<div class="capti">
+	<div>{{$ctrl.plant.name}}</div>
+	<div>{{'AGE' | translate}} {{$ctrl.plant.age}}</div>
+	<div>{{'WATERING_INTERVAL' | translate}} {{$ctrl.plant.waterInterv}} {{'DAYS' | translate}}</div>
+	<div>{{'LAST_WATERED' | translate}} {{$ctrl.plant.lastWatered | date:'dd MMM yyyy'}}</div>
 
-<div style="color:red;" ng-if="$ctrl.needsWatering($ctrl.plant)">
-    {{'NEEDS_WATER' | translate}}!
-    <button ng-click="$ctrl.waterNow($ctrl.plant)">{{'WATER' | translate}}</button>
+	<div style="color:red;" ng-if="$ctrl.needsWatering($ctrl.plant)">
+		{{'NEEDS_WATER' | translate}}!
+	</div>
+	<div style="color:green;" ng-if="!$ctrl.plant.needsWater">
+		{{'PLAN_WATER' | translate}} {{$ctrl.plant.nextWater}} {{'DAYS' | translate}}
+	</div>
 </div>
-<div style="color:green;" ng-if="!$ctrl.plant.needsWater">
-    {{'PLAN_WATER' | translate}} {{$ctrl.plant.nextWater}} {{'DAYS' | translate}}
+
+<div class="butn-container">
+	<div ng-if="$ctrl.needsWatering($ctrl.plant)">
+		<button class="butn right" ng-click="$ctrl.waterNow($ctrl.plant)">{{'WATER' | translate}}</button>
+	</div>
+
+	<button class="butn edit right" ng-click="$ctrl.waterNow($ctrl.plant)">{{'EDIT' | translate}}</button>
+
+	<button class="butn delete right" ng-click="$ctrl.deletePlant($ctrl.plant)">{{'DELETE' | translate}}</button>
 </div>

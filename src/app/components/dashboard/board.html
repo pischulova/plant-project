@@ -3,20 +3,27 @@
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
 
-    <h2>{{'HOME_DESCR' | translate}}</h2>
-    <button ng-click="$ctrl.translateAll('ru');">RU</button>
-    <button ng-click="$ctrl.translateAll('en');">EN</button>
-    <br/><br/> {{'FIND_PLANT' | translate}}: <input type="text" ng-model="search" />
-    <br/>
-    <br/>
-    <div>{{'ORDER_BY' | translate}}:
-        <button ng-click="$ctrl.order(0)"> {{'NAME' | translate}} </button>
-        <button ng-click="$ctrl.order(1)"> {{'AGE' | translate}} </button>
-        <button ng-click="$ctrl.order(2)"> {{'LAST_WATERED' | translate}} </button>
+<div class="grey-container">
+  <div class="left"> {{'HOME_DESCR' | translate}} </div>
+
+  <div style="float:right; right: 20px; width: 250px;font-size:15px;">
+  <div class="right"><input class="search" placeholder=" {{'FIND_PLANT' | translate}}" type="text" ng-model="search" /></div>
+  <div class="right">
+  {{'ORDER_BY' | translate}}:
+    <a ng-click="$ctrl.order('name')"> {{'NAME' | translate}} </a>
+    <a ng-click="$ctrl.order('age')"> {{'AGE' | translate}} </a>
+    <a ng-click="$ctrl.order('lastWatered')"> {{'LAST_WATERED' | translate}} </a>
+  </div>
+  </div>
+</div>
+
+<br/>
+<div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat="plant in $ctrl.plants | filter:search | orderBy : $ctrl.orderProp : $ctrl.isOrderReverse">
+        <div class="plant">
+            <plant plant="plant"></plant>
+        </div>
     </div>
     <br/>
-    <div style="display:inline-block; width:270px; height:290px;" ng-repeat="plant in $ctrl.plants | filter:search | orderBy:$ctrl.orderProp:$ctrl.isOrderReverse">
-        <plant plant="plant"></plant>
-    </div>
-    <br/>
+</div>
 </div>

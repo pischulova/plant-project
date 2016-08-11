@@ -6,7 +6,7 @@ export function plantService(serverService) {
         getPlants: getPlants,
         needsWatering: needsWatering,
         waterNow: waterNow,
-        deletePlant: deletePlant,
+        deletePlant: deletePlant
     };
     return service;
 
