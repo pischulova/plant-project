@@ -6,13 +6,14 @@
 <div class="grey-container">
   <div class="left"> {{'HOME_DESCR' | translate}} </div>
 
-  <div style="float:right; right: 20px; width: 250px;font-size:15px;">
-  <div class="right"><input class="search" placeholder=" {{'FIND_PLANT' | translate}}" type="text" ng-model="search" /></div>
-  <div class="right">
-  {{'ORDER_BY' | translate}}:
-    <a ng-click="$ctrl.order('name')"> {{'NAME' | translate}} </a>
-    <a ng-click="$ctrl.order('age')"> {{'AGE' | translate}} </a>
-    <a ng-click="$ctrl.order('lastWatered')"> {{'LAST_WATERED' | translate}} </a>
+  <div class="serach-container">
+    <div class="right">
+      <input class="search" placeholder=" {{'FIND_PLANT' | translate}}" type="text" ng-model="search" />
+    </div>
+    <div class="right"> {{'ORDER_BY' | translate}}:
+      <a class="lowercase" ng-click="$ctrl.order('name')"> {{'NAME' | translate}} </a> |
+      <a class="lowercase" ng-click="$ctrl.order('age')"> {{'AGE' | translate}} </a> |
+      <a class="lowercase" ng-click="$ctrl.order('lastWatered')"> {{'LAST_WATERED' | translate}} </a>
   </div>
   </div>
 </div>

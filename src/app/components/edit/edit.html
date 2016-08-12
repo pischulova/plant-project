@@ -1,0 +1,42 @@
+<div class="container">
+    <acme-navbar></acme-navbar>
+    <form name="form" novalidate>
+        <div class="form">
+            <div>
+                <h2>{{'EDIT_PLANT' | translate}}</h2>
+                <div >{{'NAME' | translate}}</div>
+                <div>
+                    <input type="text" ng-model="ct.plant.name" value="ct.plant.name" ng-disabled="{true}">
+                </div>
+            </div>
+            <div>
+                <div>{{'AGE' | translate}}</div>
+                <div>
+                    <input type="text" ng-model="ct.plant.age" value="ct.plant.age" name="age" ng-pattern="/^[0-9]{1,3}$/" required="">
+                    <div ng-show="form.$submitted || form.age.$touched" class="inline">
+                        <div ng-show="form.age.$error.required || form.age.$error.pattern" class="inline"> Required, only digits allowed</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>{{'WATERING_INTERVAL' | translate}}</div>
+                <div>
+                    <input type="text" ng-model="ct.plant.waterInterv" value="ct.plant.waterInterv" name="interval" ng-pattern="/^[0-9]{1,3}$/" required="">
+                    <div ng-show="form.$submitted || form.interval.$touched" class="inline">
+                        <div ng-show="form.interval.$error.required || form.interval.$error.pattern" class="inline"> Required, only digits allowed</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div>{{'IMAGE_LINK' | translate}}</div>
+                <div>
+                    <input type="text" ng-model="ct.plant.image" value="ct.plant.image" name="image" required="">
+                    <div ng-show="form.$submitted || form.image.$touched" class="inline">
+                        <div ng-show="form.image.$error.required" class="inline"> Required</div>
+                    </div>
+                </div>
+            </div>
+            <button class="butn add" type="submit" ng-disabled="form.$invalid" ng-click="ct.editPlant()" value="">{{'EDIT' | translate}}</button>
+        </div>
+    </form>    
+</div>

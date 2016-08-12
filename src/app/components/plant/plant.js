@@ -4,19 +4,24 @@
         bindings: {
             'plant': '='
         },
-        controller: boardController,
+        controller: plantController,
         templateUrl: templ
     };
 
-    function boardController(plantService) {
+    function plantController(plantService, $state) {
         let self = this;
 
         self.deletePlant = deletePlant;
+        self.editPlant = editPlant;
         self.needsWatering = needsWatering;
         self.waterNow = waterNow;
 
         function deletePlant(plant) {
             plantService.deletePlant(plant);
+        }
+
+        function editPlant(plant) {
+            $state.go('edit', {plant: plant});
         }
 
         function needsWatering(plant) {
@@ -28,4 +33,4 @@
         }
     }
 
-    boardController.$inject = ['plantService'];
+    plantController.$inject = ['plantService', '$state'];

@@ -14,7 +14,7 @@ describe('app: index.route', () => {
         $state.transitionTo('dashboard');
         $rootScope.$apply();
         expect($state.current.name).toBe('dashboard');
-        expect($state.current.url).toBe('/dashboard');
+        expect($state.current.url).toBe('/');
     });
 
     it('should transit to register state, and have url', () => {

@@ -3,19 +3,27 @@ export function plantService(serverService) {
     let plants = serverService.getAllPlants();
     let service = {
         addPlant: addPlant,
+        deletePlant: deletePlant,
+        editPlant: editPlant,
         getPlants: getPlants,
         needsWatering: needsWatering,
-        waterNow: waterNow,
-        deletePlant: deletePlant
+        waterNow: waterNow
+
     };
     return service;
 
-    function pushSavedPlantToPlants(data) {
-        plants.push(data);
-    }
-
     function addPlant(plant) {
         serverService.addPlant(plant, pushSavedPlantToPlants);
+    }
+
+    function deletePlant(plant) {
+        serverService.deletePlant(plant.name);
+        var index = plants.indexOf(plant);
+        plants.splice(index, 1);
+    }
+
+    function editPlant(plant) {
+        serverService.editPlant(plant, pushSavedPlantToPlants);
     }
 
     function getPlants() {
@@ -36,15 +44,18 @@ export function plantService(serverService) {
         return waterNeeded;
     }
 
+    function pushSavedPlantToPlants(data) {
+        plants.forEach(function(item, i, plants) {
+            if (item.name == data.name) {
+                plants.splice(i, 1);
+            }
+        });
+        plants.push(data);
+    }
+
     function waterNow(plant) {
         plant.lastWatered = new Date();
         serverService.waterPlant(plant.name);
-    }
-
-    function deletePlant(plant) {
-        serverService.deletePlant(plant.name);
-        var index = plants.indexOf(plant);
-        plants.splice(index, 1);
     }
 }
 plantService.$inject = ['serverService'];

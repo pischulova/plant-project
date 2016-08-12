@@ -16,7 +16,8 @@ export function translate($translateProvider) {
         'WATER': 'Water',
         'PLAN_WATER': 'Water in',
         'DELETE': 'Delete',
-        'EDIT': 'Edit'
+        'EDIT': 'Edit',
+        'EDIT_PLANT': 'Edit plant'
         
     }),
     $translateProvider.translations ('ru', {
@@ -26,7 +27,7 @@ export function translate($translateProvider) {
         'ORDER_BY': 'Сортировка',
         'NAME': 'Имя',
         'AGE': 'Возраст',
-        'LAST_WATERED': 'Последний полив',
+        'LAST_WATERED': 'Дата полива',
         'WATERING_INTERVAL': 'Частота полива',
         'DAYS': 'дн.',
         'NEEDS_WATER': 'Нужно полить',
@@ -36,7 +37,8 @@ export function translate($translateProvider) {
         'WATER': 'Полить',
         'PLAN_WATER': 'Полейте через',
         'DELETE': 'Удалить',
-        'EDIT': 'Изменить'
+        'EDIT': 'Изменить',
+        'EDIT_PLANT': 'Редактировать растение'
     }),
     $translateProvider.preferredLanguage('en');
 }

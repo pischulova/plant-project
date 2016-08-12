@@ -5,13 +5,14 @@
         templateUrl: templ
     };
 
-    function registerController(plantService) {
+    function registerController(plantService, $state) {
         let self = this;
         self.registerPlant = registerPlant;
 
         function registerPlant(plant) {
             plantService.addPlant(plant);
+            $state.go('dashboard');
         }
     }
     
-    registerController.$inject = ['plantService'];
+    registerController.$inject = ['plantService', '$state'];

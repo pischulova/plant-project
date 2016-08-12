@@ -1,24 +1,13 @@
 <nav class="navbar">
   <div >
-<!--     <div class="navbar-part">
-      <a href="https://github.com/Swiip/generator-gulp-angular">
-        <span class="glyphicon glyphicon-home"></span>
-         Gulp Angular
-      </a>
-    </div> -->
+    <ul class="navbar-part">
+      <li><a ui-sref="dashboard">Dashboard</a></li>
+      <li><a ui-sref="register" >Add plant</a></li>
+    </ul>
 
-    <div >
-      <ul class="navbar-part">
-        <li><a ng-href="#">Home</a></li>
-        <li><a ui-sref="dashboard">Dashboard</a></li>
-        <li><a ui-sref="register" >Add plant</a></li>
-      </ul>
-
-      <ul class="navbar-part right">
-        <!-- <li>Application was created {{ vm.relativeDate }}</li> -->
-        <li><a ng-click="vm.translateAll('ru');">ru</a></li>
-        <li><a ng-click="vm.translateAll('en');">en</a></li>
-      </ul>
-    </div>
+    <ul class="navbar-part right">
+      <li><a ng-click="vm.translateAll('ru');">ru</a></li>
+      <li><a ng-click="vm.translateAll('en');">en</a></li>
+    </ul>
   </div>
 </nav>

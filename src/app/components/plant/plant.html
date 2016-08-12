@@ -1,5 +1,5 @@
-<img ng-src="{{$ctrl.plant.image}}" style="display: block;margin-left:auto; margin-right:auto; height:180px;" />
-<div class="capti">
+<img ng-src="{{$ctrl.plant.image}}" class="plant-img" />
+<div class="plant-content">
 	<div>{{$ctrl.plant.name}}</div>
 	<div>{{'AGE' | translate}} {{$ctrl.plant.age}}</div>
 	<div>{{'WATERING_INTERVAL' | translate}} {{$ctrl.plant.waterInterv}} {{'DAYS' | translate}}</div>
@@ -18,7 +18,7 @@
 		<button class="butn right" ng-click="$ctrl.waterNow($ctrl.plant)">{{'WATER' | translate}}</button>
 	</div>
 
-	<button class="butn edit right" ng-click="$ctrl.waterNow($ctrl.plant)">{{'EDIT' | translate}}</button>
+	<button class="butn edit right" ng-click="$ctrl.editPlant($ctrl.plant)">{{'EDIT' | translate}}</button>
 
 	<button class="butn delete right" ng-click="$ctrl.deletePlant($ctrl.plant)">{{'DELETE' | translate}}</button>
 </div>
